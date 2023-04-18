@@ -5,6 +5,7 @@ import axios from 'axios';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import Modal from './Modal';
@@ -36,7 +37,7 @@ const RegisterModal = () => {
         registerModal.onClose();
       })
       .catch((err) => {
-        console.log(err);
+        toast.error('Oops! Something went wrong.');
       })
       .finally(() => {
         setIsLoading(false);
@@ -48,6 +49,7 @@ const RegisterModal = () => {
       <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
       <Input
         id="email"
+        type="email"
         label="Email"
         disabled={isLoading}
         register={register}

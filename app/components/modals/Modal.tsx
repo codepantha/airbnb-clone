@@ -82,9 +82,9 @@ const Modal: React.FC<ModalProps> = ({
               showModal ? 'translate-y-0' : 'translate-y-full'
             } ${showModal ? 'opacity-100' : 'opacity-0'}`}
           >
-            <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg shadow lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
               {/* HEADER */}
-              <header className="flex items-center p-6 rounded-t justify-center relative border-b-[1px]">
+              <header className="flex items-center p-6 lg:mt-8 rounded-t justify-center relative border-b-[1px]">
                 <button
                   onClick={handleClose}
                   className="p1 border-0 hover:opacity-70 transition absolute left-9"
@@ -98,12 +98,21 @@ const Modal: React.FC<ModalProps> = ({
               {/* FOOTER */}
               <footer className="flex flex-col gap-2 p-6">
                 <div className="flex flex-row items-center gap-4 w-full">
+                  {secondaryAction && secondaryActionLabel && (
+                    <Button
+                      outline
+                      disabled={disabled}
+                      label={secondaryActionLabel}
+                      onClick={handleSecondaryAction}
+                    />
+                  )}
                   <Button
                     disabled={disabled}
                     label={actionLabel}
                     onClick={handleSubmit}
                   />
                 </div>
+                {footer}
               </footer>
             </div>
           </div>

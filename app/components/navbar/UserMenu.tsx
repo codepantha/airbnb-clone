@@ -6,8 +6,14 @@ import Avatar from '../Avatar';
 import MenuItem from './MenuItem';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import useLoginModal from '@/app/hooks/useLoginModal';
+import { User } from '@prisma/client';
+import { signOut } from 'next-auth/react';
 
-const UserMenu = () => {
+interface UserMenuProps {
+  currentUser?: User | null;
+}
+
+const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
@@ -37,10 +43,43 @@ const UserMenu = () => {
             overflow-hidden right-0 top-12 text-sm"
         >
           <div className="flex flex-col cursor-pointer">
-            <>
-              <MenuItem onClickHandler={loginModal.onOpen} label="Login" />
-              <MenuItem onClickHandler={registerModal.onOpen} label="Sign up" />
-            </>
+            {currentUser ? (
+              <>
+                <MenuItem 
+                  label="My trips"
+                  onClickHandler={() => {}}
+                />
+                <MenuItem 
+                  label="My favorites"
+                  onClickHandler={() => {}}
+                />
+                <MenuItem 
+                  label="My reservations"
+                  onClickHandler={() => {}}
+                />
+                <MenuItem 
+                  label="My properties"
+                  onClickHandler={() => {}}
+                />
+                <MenuItem 
+                  label="Airbnb your home"
+                  onClickHandler={() => {}}
+                />
+                <hr />
+                <MenuItem 
+                  label="Logout"
+                  onClickHandler={signOut}
+                />
+              </>
+            ) : (
+              <>
+                <MenuItem onClickHandler={loginModal.onOpen} label="Login" />
+                <MenuItem
+                  onClickHandler={registerModal.onOpen}
+                  label="Sign up"
+                />
+              </>
+            )}
           </div>
         </div>
       )}

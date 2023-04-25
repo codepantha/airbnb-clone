@@ -5,10 +5,12 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import Avatar from '../Avatar';
 import MenuItem from './MenuItem';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
+import useLoginModal from '@/app/hooks/useLoginModal';
 
 const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
 
   const toggleOpen = useCallback(() => {
     setIsOpen((prevValue) => !prevValue);
@@ -36,7 +38,7 @@ const UserMenu = () => {
         >
           <div className="flex flex-col cursor-pointer">
             <>
-              <MenuItem onClickHandler={() => {}} label="Login" />
+              <MenuItem onClickHandler={loginModal.onOpen} label="Login" />
               <MenuItem onClickHandler={registerModal.onOpen} label="Sign up" />
             </>
           </div>

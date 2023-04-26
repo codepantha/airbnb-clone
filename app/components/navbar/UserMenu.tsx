@@ -5,10 +5,18 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import Avatar from '../Avatar';
 import MenuItem from './MenuItem';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
+import useLoginModal from '@/app/hooks/useLoginModal';
+import { signOut } from 'next-auth/react';
+import { SafeUser } from '@/app/types';
 
-const UserMenu = () => {
+interface UserMenuProps {
+  currentUser?: SafeUser | null;
+}
+
+const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
 
   const toggleOpen = useCallback(() => {
     setIsOpen((prevValue) => !prevValue);
@@ -23,7 +31,7 @@ const UserMenu = () => {
         <div onClick={toggleOpen} className="userMenu__right">
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar src={currentUser?.image} />
           </div>
         </div>
       </div>
@@ -35,10 +43,43 @@ const UserMenu = () => {
             overflow-hidden right-0 top-12 text-sm"
         >
           <div className="flex flex-col cursor-pointer">
-            <>
-              <MenuItem onClickHandler={() => {}} label="Login" />
-              <MenuItem onClickHandler={registerModal.onOpen} label="Sign up" />
-            </>
+            {currentUser ? (
+              <>
+                <MenuItem 
+                  label="My trips"
+                  onClickHandler={() => {}}
+                />
+                <MenuItem 
+                  label="My favorites"
+                  onClickHandler={() => {}}
+                />
+                <MenuItem 
+                  label="My reservations"
+                  onClickHandler={() => {}}
+                />
+                <MenuItem 
+                  label="My properties"
+                  onClickHandler={() => {}}
+                />
+                <MenuItem 
+                  label="Airbnb your home"
+                  onClickHandler={() => {}}
+                />
+                <hr />
+                <MenuItem 
+                  label="Logout"
+                  onClickHandler={signOut}
+                />
+              </>
+            ) : (
+              <>
+                <MenuItem onClickHandler={loginModal.onOpen} label="Login" />
+                <MenuItem
+                  onClickHandler={registerModal.onOpen}
+                  label="Sign up"
+                />
+              </>
+            )}
           </div>
         </div>
       )}

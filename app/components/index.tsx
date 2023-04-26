@@ -8,3 +8,4 @@ export { default as LoginModal } from './modals/LoginModal';
 export { default as Button } from './Button';
 export { default as Heading } from './Heading';
 export { default as Input } from './inputs/Input';
+export { default as CategoryBox } from './CategoryBox';

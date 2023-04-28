@@ -22,6 +22,11 @@ const LoginModal = () => {
   const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
 
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
+
   const {
     register,
     handleSubmit,
@@ -95,9 +100,9 @@ const LoginModal = () => {
       />
       <section className="text-neutral-500 text-center mt-4 font-light">
         <p>
-          Already have an account?
+          Dont have an account?
           <span
-            onClick={registerModal.onClose}
+            onClick={toggle}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
             Login

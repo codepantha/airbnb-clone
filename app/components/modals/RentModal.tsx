@@ -11,6 +11,7 @@ import { categories } from '../navbar/Categories';
 import CategoryInput from '../inputs/CategoryInput';
 import CountrySelect from '../inputs/CountrySelect';
 import Counter from '../inputs/Counter';
+import ImageUpload from '../inputs/ImageUpload';
 
 enum Steps {
   Category = 0,
@@ -51,6 +52,7 @@ const RentModal = () => {
   const guestCount = watch('guestCount');
   const roomCount = watch('roomCount');
   const bathroomCount = watch('bathroomCount');
+  const imageSrc = watch('imageSrc');
 
   // dynamically import and re-render Map
   const Map = useMemo(
@@ -154,6 +156,18 @@ const RentModal = () => {
         />
       </div>
     );
+  }
+
+  if (step === Steps.Images) {
+    bodyContent = (
+      <div className="rent-body">
+        <Heading
+          title="Share some basics about your place"
+          subtitle="What amenities do you have?"
+        />
+        <ImageUpload value={imageSrc} onChange={(value) => setCustomValue('imageSrc', value)} />
+      </div>
+    )
   }
 
   return (

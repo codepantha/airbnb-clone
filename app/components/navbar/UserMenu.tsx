@@ -8,6 +8,7 @@ import useRegisterModal from '@/app/hooks/useRegisterModal';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { signOut } from 'next-auth/react';
 import { SafeUser } from '@/app/types';
+import useRentModal from '@/app/hooks/useRentModal';
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -17,15 +18,22 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+  const rentModal = useRentModal();
 
   const toggleOpen = useCallback(() => {
     setIsOpen((prevValue) => !prevValue);
   }, []);
 
+  const onRent = useCallback(() => {
+    if (!currentUser) return loginModal.onOpen();
+
+    rentModal.onOpen();
+  }, [currentUser, loginModal, rentModal]);
+
   return (
     <div className="relative">
       <div className="userMenu">
-        <div onClick={() => {}} className="userMenu__left">
+        <div onClick={onRent} className="userMenu__left">
           Airbnb your home
         </div>
         <div onClick={toggleOpen} className="userMenu__right">
@@ -45,31 +53,13 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem 
-                  label="My trips"
-                  onClickHandler={() => {}}
-                />
-                <MenuItem 
-                  label="My favorites"
-                  onClickHandler={() => {}}
-                />
-                <MenuItem 
-                  label="My reservations"
-                  onClickHandler={() => {}}
-                />
-                <MenuItem 
-                  label="My properties"
-                  onClickHandler={() => {}}
-                />
-                <MenuItem 
-                  label="Airbnb your home"
-                  onClickHandler={() => {}}
-                />
+                <MenuItem label="My trips" onClickHandler={() => {}} />
+                <MenuItem label="My favorites" onClickHandler={() => {}} />
+                <MenuItem label="My reservations" onClickHandler={() => {}} />
+                <MenuItem label="My properties" onClickHandler={() => {}} />
+                <MenuItem label="Airbnb your home" onClickHandler={rentModal.onOpen} />
                 <hr />
-                <MenuItem 
-                  label="Logout"
-                  onClickHandler={signOut}
-                />
+                <MenuItem label="Logout" onClickHandler={signOut} />
               </>
             ) : (
               <>

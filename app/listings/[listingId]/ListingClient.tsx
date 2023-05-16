@@ -9,8 +9,7 @@ import { Range } from 'react-date-range';
 
 import { Container } from '@/app/components';
 import { categories } from '@/app/components/navbar/Categories';
-import { SafeListing, SafeUser } from '@/app/types';
-import { Reservation } from '@prisma/client';
+import { SafeListing, SafeReservation, SafeUser } from '@/app/types';
 import { ListingHead, ListingInfo, ListingReservation } from '@/app/components/listings';
 import useLoginModal from '@/app/hooks/useLoginModal';
 
@@ -20,7 +19,7 @@ const initialDateRange = {
   key: 'selection'
 };
 interface ListingClientProps {
-  reservations?: Reservation[];
+  reservations?: SafeReservation[];
   listing: SafeListing & {
     user: SafeUser;
   };
@@ -50,7 +49,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
       dates = [...dates, ...range];
     });
-    
+
     return dates;
   }, [reservations]);
 

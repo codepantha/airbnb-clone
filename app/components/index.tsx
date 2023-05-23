@@ -13,3 +13,4 @@ export { default as CategoryBox } from './CategoryBox';
 export { default as Map } from './Map';
 export { default as EmptyState } from './EmptyState';
 export { default as HeartButton } from './HeartButton';
+export { default as Loader } from './Loader';

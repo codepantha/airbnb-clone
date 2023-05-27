@@ -31,11 +31,17 @@
 > This is an Airbnb clone built using Next.js 13, TypeScript, MongoDB, Prisma and TailwindCSS. Authenticated users can list their homes for rent, like/unlike a property, search for available homes in their vacation destination, make reservations, cancel reservations etc.
 
 <table>
-  <th>Homepage Desktop View</th>
-  <th>Homepage Mobile View</th>
+  <th>Registration Mobile View</th>
+  <th>Login Page Mobile View</th>
   <tr>
-    <td><img src="./public/images/homepage-desktop.png"  alt="1" width = 650px height = 280px ></td>
-    <td><img src="./public/images/homepage-mobile.png" alt="3" width = 375px height = 576px ></td>
+    <td><img src="https://github.com/codepantha/airbnb-clone/assets/46839548/5b125658-9c96-4ead-a84e-2908cb1fb0d1"  alt="registration"></td>
+    <td><img src="https://github.com/codepantha/airbnb-clone/assets/46839548/9a5f2ebb-e2dd-4b24-b3aa-c8fc3629937e" alt="login"></td>
+   </tr> 
+  <th>Homepage Mobile View</th>
+  <th>Show Listing Page Mobile View</th>
+  <tr>
+    <td><img src="https://github.com/codepantha/airbnb-clone/assets/46839548/93e38f6a-2cc2-4b21-8842-4aaeffec6b9f"  alt="home"></td>
+    <td><img src="https://github.com/codepantha/airbnb-clone/assets/46839548/94148b32-b533-4be3-ad7e-bf5d3bc38959" alt="listing"></td>
    </tr> 
 </table>
 
@@ -87,7 +93,7 @@
 
 > Click the link below to see the demo
 
-- [Live Demo Link](https://tweetbird.vercel.app/)
+- [Live Demo Link](https://rent-for-vacation.vercel.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -107,7 +113,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone https://github.com/codepantha/tweetbird.git
+  git clone https://github.com/codepantha/airbnb-clone.git
 ```
 
 ### Install
@@ -115,7 +121,7 @@ Clone this repository to your desired folder:
 Install this project with:
 
 ```sh
-  cd tweetbird
+  cd airbnb-clone
   npm install
 ```
 
@@ -171,7 +177,7 @@ To run tests, run the following command:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/codepantha/tweetbird/issues).
+Feel free to check the [issues page](https://github.com/codepantha/airbnb-clone/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -200,7 +206,5 @@ FAQs will be added here in the future
 ## 📝 License <a id="license"></a>
 
 This project is [MIT](./LICENSE) licensed.
-
-_NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

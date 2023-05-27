@@ -10,7 +10,6 @@ export { default as Button } from './Button';
 export { default as Heading } from './Heading';
 export { default as Input } from './inputs/Input';
 export { default as CategoryBox } from './CategoryBox';
-export { default as Map } from './Map';
 export { default as EmptyState } from './EmptyState';
 export { default as HeartButton } from './HeartButton';
 export { default as Loader } from './Loader';

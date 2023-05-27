@@ -7,6 +7,8 @@ import 'leaflet/dist/leaflet.css';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import { useEffect, useState } from 'react';
+import EmptyState from './EmptyState';
 
 // @ts-ignore
 delete L.Icon.Default.prototype._getIconUrl;
@@ -21,7 +23,13 @@ interface MapProps {
 }
 
 const Map: React.FC<MapProps> = ({ center }) => {
-  return (
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  return isMounted ? (
     <MapContainer
       center={(center as L.LatLngExpression) || [51, -0.09]}
       zoom={center ? 4 : 2}
@@ -34,6 +42,8 @@ const Map: React.FC<MapProps> = ({ center }) => {
       />
       <Marker position={(center as L.LatLngExpression) || [51, -0.09]} />
     </MapContainer>
+  ) : (
+    <EmptyState title="Map loading" subtitle="Please wait..." />
   );
 };
 

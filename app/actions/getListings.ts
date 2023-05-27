@@ -24,17 +24,7 @@ export default async function getListings(params: iListingsParams) {
       category
     } = params;
 
-    let query: {
-      userId?: string;
-      guestCount?: { gte: number };
-      roomCount?: { gte: number };
-      bathroomCount?: { gte: number };
-      startDate?: string;
-      endDate?: string;
-      locationValue?: string;
-      category?: string;
-      NOT?: {};
-    } = {};
+    let query: any = {};
 
     if (userId) query.userId = userId;
 
